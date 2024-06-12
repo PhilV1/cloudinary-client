@@ -1,5 +1,5 @@
 import NavComponent from './components/NavComponent'
-import CreateProduct from './components/CreateProduct'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <div>
         <NavComponent />
         <div className=" mx-auto p-5 lg:w-2/3 lg:p-2">
-          <CreateProduct />
+          <Outlet />
         </div>
       </div>
     </>
