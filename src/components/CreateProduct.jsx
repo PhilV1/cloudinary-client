@@ -138,7 +138,7 @@ const CreateProduct = () => {
       </div>
 
       <form onSubmit={handleFormSubmit} className="m-x-auto w-full">
-        <div className="flex flex-col gap-8 sm:flex-row lg:gap-16">
+        <div className="flex  gap-8 sm:flex-row lg:gap-16">
           <div className="lg:w-1/2">
             <div className="form-control w-full">
               <label className="label" htmlFor="name">
@@ -177,7 +177,7 @@ const CreateProduct = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-1/2">
+        <div className="">
           {uploading ? (
             <ClipLoader
               color={'blue'}
@@ -187,7 +187,7 @@ const CreateProduct = () => {
               className="mt-4"
             />
           ) : (
-            <div className="form-control w-full">
+            <div className="form-control w-full ">
               {imageUrl && (
                 <img
                   src={imageUrl}
