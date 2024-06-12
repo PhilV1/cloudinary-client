@@ -10,8 +10,10 @@ const CreateProduct = () => {
     const { id, value } = e.target
     if (id === 'name') {
       setName(value)
+      setErrors({ ...errors, name: '' })
     } else if (id === 'description') {
       setDescription(value)
+      setErrors({ ...errors, description: '' })
     }
   }
   //Form validation
@@ -30,6 +32,12 @@ const CreateProduct = () => {
       setErrors(newErrors)
       return
     }
+
+    const productData = {
+      name,
+      description,
+    }
+    console.log('Form data: ', productData) // log the form data
 
     // Clear the form
     setName('')
@@ -56,6 +64,9 @@ const CreateProduct = () => {
                 value={name}
                 onChange={handleChange}
               />
+              {errors.name && (
+                <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+              )}
             </div>
 
             <div className="form-control w-full">
@@ -70,6 +81,11 @@ const CreateProduct = () => {
                 value={description}
                 onChange={handleChange}
               ></textarea>
+              {errors.description && (
+                <p className="mt-1 text-xs text-red-500">
+                  {errors.description}
+                </p>
+              )}
             </div>
           </div>
         </div>
