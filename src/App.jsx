@@ -1,7 +1,15 @@
+import NavComponent from './components/NavComponent'
+import CreateProduct from './components/CreateProduct'
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <div>
+        <NavComponent />
+        <div className="container mx-auto p-5 lg:w-2/3 lg:p-2">
+          <CreateProduct />
+        </div>
+      </div>
     </>
   )
 }
