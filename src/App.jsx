@@ -6,7 +6,7 @@ function App() {
     <>
       <div>
         <NavComponent />
-        <div className="container mx-auto p-5 lg:w-2/3 lg:p-2">
+        <div className=" mx-auto p-5 lg:w-2/3 lg:p-2">
           <CreateProduct />
         </div>
       </div>

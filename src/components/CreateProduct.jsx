@@ -127,7 +127,7 @@ const CreateProduct = () => {
   }
 
   return (
-    <>
+    <div className="flex flex-col">
       <div>
         <h1 className="mb-12 text-center text-3xl font-bold uppercase text-primary">
           Add a Product
@@ -210,7 +210,7 @@ const CreateProduct = () => {
           Submit
         </button>
       </form>
-    </>
+    </div>
   )
 }
 
