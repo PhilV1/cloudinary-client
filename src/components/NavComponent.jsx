@@ -10,7 +10,9 @@ const NavComponent = () => {
           <a className="btn btn-ghost text-xl">Products</a>
         </div>
         <div>
-          <a className="btn btn-ghost text-xl">Login</a>
+          <a className="btn text-white btn-primary hover:btn-ghost text-xl">
+            Login
+          </a>
         </div>
       </div>
     </nav>
