@@ -39,7 +39,6 @@ const CreateProduct = () => {
 
   const handleChange = (e) => {
     const { id, value, files } = e.target
-    console.log(e)
 
     if (id === 'image') {
       handleImageChange(files[0], e)
