@@ -39,6 +39,7 @@ const CreateProduct = () => {
 
   const handleChange = (e) => {
     const { id, value, files } = e.target
+    console.log(e)
 
     if (id === 'image') {
       handleImageChange(files[0], e)
@@ -186,7 +187,11 @@ const CreateProduct = () => {
               />
             )}
             <label className="label" htmlFor="image">
-              <span className="label-text">Upload an Image:</span>
+              {imageUrl ? (
+                ''
+              ) : (
+                <span className="label-text">Upload an Image:</span>
+              )}
             </label>
             <input
               type="file"
