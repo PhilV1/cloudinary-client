@@ -1,10 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const CreateProduct = () => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [errors, setErrors] = useState({})
   const backendUrl = 'http://localhost:3002'
+  const [message, setMessage] = useState(null)
+  const [isVisible, setIsVisible] = useState(true)
+
+  // Message nach 5 Sekunden verstecken
+  useEffect(() => {
+    let timer
+    if (message && isVisible) {
+      timer = setTimeout(() => {
+        setIsVisible(false)
+      }, 5000) // Nachricht nach 5 Sekunden verstecken
+    }
+    return () => clearTimeout(timer) // Aufräumen, wenn die Komponente unmountet
+  }, [message, isVisible])
 
   const handlePostData = async (url, data) => {
     try {
@@ -57,6 +70,8 @@ const CreateProduct = () => {
 
     const responseData = await handlePostData(backendUrl, productData)
     console.log('Form data: ', productData) // log the form data
+    // Set the message
+    setMessage(responseData.message)
 
     // Clear the form
     setName('')
@@ -65,9 +80,15 @@ const CreateProduct = () => {
 
   return (
     <>
-      <h1 className="mb-12 text-center text-3xl font-bold uppercase text-primary">
-        Add a Product
-      </h1>
+      <div>
+        <h1 className="mb-12 text-center text-3xl font-bold uppercase text-primary">
+          Add a Product
+        </h1>
+        {message && isVisible && (
+          <p className="mt-3 text-xs font-bold text-green-500">{message}</p>
+        )}
+      </div>
+
       <form onSubmit={handleFormSubmit} className="m-x-auto w-full">
         <div className="flex flex-col gap-8 sm:flex-row lg:gap-16">
           <div className="lg:w-1/2">
