@@ -11,7 +11,7 @@ const NavComponent = () => {
         </div>
         <div>
           <NavLink
-            to="/"
+            to="/images"
             className="btn btn-ghost text-xl [&.active]:text-white"
           >
             Images
