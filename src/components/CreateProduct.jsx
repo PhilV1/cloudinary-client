@@ -117,7 +117,7 @@ const CreateProduct = () => {
     const responseData = await handlePostData(backendUrl, productData)
     console.log('Form data: ', productData) // log the form data
     // Set the message
-    setMessage(responseData.message)
+    setMessage('Produkt erfolgreich hinzugefügt!')
 
     // Clear the form
     setName('')
