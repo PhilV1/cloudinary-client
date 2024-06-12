@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CreateProduct from './components/CreateProduct.jsx'
 import ImageList from './components/ImageList.jsx'
+import LoginForm from './components/LoginForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: '/images',
         element: <ImageList />,
+      },
+      {
+        path: '/login',
+        element: <LoginForm />,
       },
     ],
   },

@@ -24,9 +24,12 @@ const NavComponent = () => {
           </NavLink>
         </div>
         <div>
-          <a className="btn text-white btn-primary hover:btn-ghost text-xl">
+          <NavLink
+            to="/login"
+            className="btn text-white btn-primary hover:btn-ghost text-xl"
+          >
             Login
-          </a>
+          </NavLink>
         </div>
       </div>
     </nav>
