@@ -184,6 +184,7 @@ const CreateProduct = () => {
               size={150}
               aria-label="Loading Spinner"
               data-testid="loader"
+              className="mt-4"
             />
           ) : (
             <div className="form-control w-full">

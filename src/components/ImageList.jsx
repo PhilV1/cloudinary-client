@@ -25,6 +25,10 @@ function ImageList() {
 
   return (
     <div className="flex gap-4">
+      {data.length === 0 && (
+        <h2 className="font-bold text-xl">No Images added yet</h2>
+      )}
+
       {data.map((item) => (
         <div key={item._id} className="card w-96 bg-base-100 shadow-xl ">
           <figure>
