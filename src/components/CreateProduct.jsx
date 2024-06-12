@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ClipLoader from 'react-spinners/ClipLoader'
 
 const CreateProduct = () => {
   const [name, setName] = useState('')
@@ -118,7 +119,7 @@ const CreateProduct = () => {
     console.log('Form data: ', productData) // log the form data
     // Set the message
     setMessage('Produkt erfolgreich hinzugefügt!')
-
+    setUploading(false)
     // Clear the form
     setName('')
     setDescription('')
@@ -177,29 +178,38 @@ const CreateProduct = () => {
           </div>
         </div>
         <div className="lg:w-1/2">
-          <div className="form-control w-full">
-            {imageUrl && (
-              <img
-                src={imageUrl}
-                alt="Uploaded Preview"
-                className="mt-3 w-full max-w-xs"
-              />
-            )}
-            <label className="label" htmlFor="image">
-              {imageUrl ? (
-                ''
-              ) : (
-                <span className="label-text">Upload an Image:</span>
-              )}
-            </label>
-            <input
-              type="file"
-              id="image"
-              className="file-input w-full max-w-xs"
-              onChange={handleChange}
-              accept="image/png, image/jpg, image/jpeg, image/jfif"
+          {uploading ? (
+            <ClipLoader
+              color={'blue'}
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
             />
-          </div>
+          ) : (
+            <div className="form-control w-full">
+              {imageUrl && (
+                <img
+                  src={imageUrl}
+                  alt="Uploaded Preview"
+                  className="mt-3 w-full max-w-xs"
+                />
+              )}
+              <label className="label" htmlFor="image">
+                {imageUrl ? (
+                  ''
+                ) : (
+                  <span className="label-text">Upload an Image:</span>
+                )}
+              </label>
+              <input
+                type="file"
+                id="image"
+                className="file-input w-full max-w-xs"
+                onChange={handleChange}
+                accept="image/png, image/jpg, image/jpeg, image/jfif"
+              />
+            </div>
+          )}
           {errors.image && (
             <p className="text-sm text-red-500">{errors.image}</p>
           )}
