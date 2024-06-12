@@ -4,6 +4,23 @@ const CreateProduct = () => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [errors, setErrors] = useState({})
+  const backendUrl = 'http://localhost:3002'
+
+  const handlePostData = async (url, data) => {
+    try {
+      const response = await fetch(`${url}/products`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      const responseData = await response.json()
+      return responseData
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -37,6 +54,8 @@ const CreateProduct = () => {
       name,
       description,
     }
+
+    const responseData = await handlePostData(backendUrl, productData)
     console.log('Form data: ', productData) // log the form data
 
     // Clear the form
