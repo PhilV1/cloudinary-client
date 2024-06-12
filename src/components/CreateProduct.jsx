@@ -7,6 +7,8 @@ const CreateProduct = () => {
   const backendUrl = 'http://localhost:3002'
   const [message, setMessage] = useState(null)
   const [isVisible, setIsVisible] = useState(true)
+  const [imageUrl, setImageUrl] = useState('')
+  const [uploading, setUploading] = useState(false)
 
   // Message nach 5 Sekunden verstecken
   useEffect(() => {
@@ -35,8 +37,49 @@ const CreateProduct = () => {
     }
   }
 
-  // Handle form input changes
   const handleChange = (e) => {
+    const { id, value, files } = e.target
+
+    if (id === 'image') {
+      handleImageChange(files[0], e)
+    } else {
+      handleTextChange(e)
+    }
+  }
+
+  // Handle image changes
+  const handleImageChange = (imageFile, e) => {
+    if (
+      // Überprüfen Sie die Dateigröße und den Dateityp
+      imageFile &&
+      (imageFile.type === 'image/png' ||
+        imageFile.type === 'image/jpeg' ||
+        imageFile.type === 'image/jpg' ||
+        imageFile.type === 'image/gif') &&
+      imageFile.size <= 5000000
+    ) {
+      const readFile = new FileReader()
+      readFile.readAsDataURL(imageFile)
+      readFile.onloadend = () => {
+        // Bild-URL setzen
+        setImageUrl(readFile.result)
+
+        // Fehlermeldung zurücksetzen
+        setErrors((prevErrors) => ({ ...prevErrors, image: null }))
+      }
+    } else {
+      e.target.value = null
+      setImageUrl('')
+      // Fehlermeldung anzeigen
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        image: 'Invalid file type or size',
+      }))
+    }
+  }
+
+  // Handle text changes
+  const handleTextChange = (e) => {
     const { id, value } = e.target
     if (id === 'name') {
       setName(value)
@@ -51,6 +94,7 @@ const CreateProduct = () => {
     const newErrors = {}
     if (!name) newErrors.name = 'Name is required'
     if (!description) newErrors.description = 'Description is required'
+    if (!imageUrl) newErrors.image = 'Image is required'
     return newErrors
   }
 
@@ -63,9 +107,11 @@ const CreateProduct = () => {
       return
     }
 
+    setUploading(true)
     const productData = {
       name,
       description,
+      image: imageUrl, // Bild-URL hinzufügen
     }
 
     const responseData = await handlePostData(backendUrl, productData)
@@ -76,6 +122,7 @@ const CreateProduct = () => {
     // Clear the form
     setName('')
     setDescription('')
+    setImageUrl('')
   }
 
   return (
@@ -128,6 +175,30 @@ const CreateProduct = () => {
               )}
             </div>
           </div>
+        </div>
+        <div className="lg:w-1/2">
+          <div className="form-control w-full">
+            {imageUrl && (
+              <img
+                src={imageUrl}
+                alt="Uploaded Preview"
+                className="mt-3 w-full max-w-xs"
+              />
+            )}
+            <label className="label" htmlFor="image">
+              <span className="label-text">Upload an Image:</span>
+            </label>
+            <input
+              type="file"
+              id="image"
+              className="file-input w-full max-w-xs"
+              onChange={handleChange}
+              accept="image/png, image/jpg, image/jpeg, image/jfif"
+            />
+          </div>
+          {errors.image && (
+            <p className="text-sm text-red-500">{errors.image}</p>
+          )}
         </div>
 
         <button type="submit" className="btn btn-primary mt-3">
