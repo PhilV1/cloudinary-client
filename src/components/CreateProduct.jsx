@@ -5,7 +5,7 @@ const CreateProduct = () => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [errors, setErrors] = useState({})
-  const backendUrl = 'https://cloudinary-api.onrender.com/'
+  const backendUrl = 'https://cloudinary-api.onrender.com'
   const [message, setMessage] = useState(null)
   const [isVisible, setIsVisible] = useState(true)
   const [imageUrl, setImageUrl] = useState('')

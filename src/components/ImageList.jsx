@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 function ImageList() {
-  const backendUrl = 'https://cloudinary-api.onrender.com/'
+  const backendUrl = 'https://cloudinary-api.onrender.com'
   const [data, setData] = useState([])
   useEffect(() => {
     fetchData()
