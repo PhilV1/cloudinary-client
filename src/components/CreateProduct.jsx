@@ -11,8 +11,6 @@ const CreateProduct = () => {
   const [imageUrl, setImageUrl] = useState('')
   const [uploading, setUploading] = useState(false)
 
-  console.log(backendUrl)
-
   // Message nach 5 Sekunden verstecken
   useEffect(() => {
     let timer
