@@ -5,11 +5,13 @@ const CreateProduct = () => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [errors, setErrors] = useState({})
-  const backendUrl = 'https://cloudinary-api.onrender.com'
+  const backendUrl = import.meta.env.VITE_BASE_URL
   const [message, setMessage] = useState(null)
   const [isVisible, setIsVisible] = useState(true)
   const [imageUrl, setImageUrl] = useState('')
   const [uploading, setUploading] = useState(false)
+
+  console.log(backendUrl)
 
   // Message nach 5 Sekunden verstecken
   useEffect(() => {
@@ -127,7 +129,7 @@ const CreateProduct = () => {
   }
 
   return (
-    <div className="">
+    <div className="flex flex-col items-center">
       <div>
         <h1 className="mb-12 text-center text-3xl font-bold uppercase text-primary">
           Add a Product
@@ -137,9 +139,9 @@ const CreateProduct = () => {
         )}
       </div>
 
-      <form onSubmit={handleFormSubmit} className="m-x-auto w-full">
-        <div className="flex  gap-8 sm:flex-row lg:gap-16">
-          <div className="lg:w-1/2">
+      <form onSubmit={handleFormSubmit} className="grid grid-cols-2 gap-x-8">
+        <div className="">
+          <div className="">
             <div className="form-control w-full">
               <label className="label" htmlFor="name">
                 <span className="label-text">Name</span>
@@ -193,7 +195,7 @@ const CreateProduct = () => {
                 <img
                   src={imageUrl}
                   alt="Uploaded Preview"
-                  className="mt-3 w-full max-w-xs"
+                  className="mt-3 h-fit max-w-xs"
                 />
               )}
               <label className="label" htmlFor="image">

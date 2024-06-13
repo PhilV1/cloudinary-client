@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 function ImageList() {
-  const backendUrl = 'https://cloudinary-api.onrender.com'
+  const backendUrl = import.meta.env.VITE_BASE_URL
   const [data, setData] = useState([])
   useEffect(() => {
     fetchData()
