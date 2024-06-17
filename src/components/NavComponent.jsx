@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import ThemeToggle from './ThemeToggler'
 
 const NavComponent = () => {
   return (
@@ -27,13 +28,16 @@ const NavComponent = () => {
               Products
             </NavLink>
           </div>
-          <div>
-            <NavLink
-              to="/login"
-              className="btn text-white btn-primary hover:btn-ghost text-xl"
-            >
-              Login
-            </NavLink>
+          <div className="flex gap-2 items-center">
+            <div>
+              <NavLink
+                to="/login"
+                className="btn text-white btn-primary hover:btn-ghost text-xl"
+              >
+                Login
+              </NavLink>
+            </div>
+            <ThemeToggle />
           </div>
         </div>
       </nav>
