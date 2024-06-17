@@ -17,7 +17,6 @@ const CreateProduct = () => {
     if (message && isVisible) {
       timer = setTimeout(() => {
         setIsVisible(false)
-        setMessage(null)
       }, 4000)
     }
     return () => clearTimeout(timer)
