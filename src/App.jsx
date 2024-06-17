@@ -1,15 +1,13 @@
-import NavComponent from './components/NavComponent'
-import { Outlet } from 'react-router-dom'
-
 function App() {
   return (
     <>
-      <div>
-        <NavComponent />
-        <div className=" mx-auto p-5 lg:w-2/3 lg:p-2">
-          <Outlet />
-        </div>
-      </div>
+      <h1 className="mb-12 text-center text-3xl font-bold uppercase text-primary">
+        WELCOME TO REACT-DINARY
+      </h1>
+      <h2 className="font-bold text-xl text-center">
+        React-Dinary is a dynamic, user-friendly website designed for showcasing
+        and managing product images with ease.
+      </h2>
     </>
   )
 }

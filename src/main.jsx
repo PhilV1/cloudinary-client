@@ -6,12 +6,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CreateProduct from './components/CreateProduct.jsx'
 import ImageList from './components/ImageList.jsx'
 import LoginForm from './components/LoginForm.jsx'
+import NavComponent from './components/NavComponent.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <NavComponent />,
     children: [
+      {
+        path: '/',
+        element: <App />,
+      },
       {
         path: '/product',
         element: <CreateProduct />,

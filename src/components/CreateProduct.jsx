@@ -11,15 +11,15 @@ const CreateProduct = () => {
   const [imageUrl, setImageUrl] = useState('')
   const [uploading, setUploading] = useState(false)
 
-  // Message nach 5 Sekunden verstecken
+  // Message nach 4 Sekunden verstecken
   useEffect(() => {
     let timer
     if (message && isVisible) {
       timer = setTimeout(() => {
         setIsVisible(false)
-      }, 5000) // Nachricht nach 5 Sekunden verstecken
+      }, 4000)
     }
-    return () => clearTimeout(timer) // Aufräumen, wenn die Komponente unmountet
+    return () => clearTimeout(timer)
   }, [message, isVisible])
 
   const handlePostData = async (url, data) => {
