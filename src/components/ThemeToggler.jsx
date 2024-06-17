@@ -7,7 +7,11 @@ const themes = {
 }
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(themes.light)
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? themes.dark
+    : themes.light
+
+  const [theme, setTheme] = useState(systemTheme)
 
   const toggleTheme = () => {
     const newTheme = theme === themes.light ? themes.dark : themes.light
