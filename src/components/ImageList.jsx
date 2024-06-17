@@ -5,7 +5,7 @@ function ImageList() {
   const [data, setData] = useState([])
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [data])
 
   const fetchData = () => {
     fetch(`${backendUrl}/products`)
