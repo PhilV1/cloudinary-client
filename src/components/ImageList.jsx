@@ -28,7 +28,7 @@ function ImageList() {
       <h1 className="mb-12 text-center text-3xl font-bold uppercase text-primary">
         ALL IMAGES
       </h1>
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex gap-4 flex-wrap justify-center">
         {data.length === 0 && (
           <h2 className="font-bold text-xl">No Images added yet</h2>
         )}
