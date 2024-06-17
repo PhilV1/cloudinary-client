@@ -137,7 +137,10 @@ const CreateProduct = () => {
         )}
       </div>
 
-      <form onSubmit={handleFormSubmit} className="grid grid-cols-2 gap-x-8">
+      <form
+        onSubmit={handleFormSubmit}
+        className="md:grid md:grid-cols-2 md:gap-x-8"
+      >
         <div className="">
           <div className="">
             <div className="form-control w-full">
@@ -175,6 +178,12 @@ const CreateProduct = () => {
                 </p>
               )}
             </div>
+            <button
+              type="submit"
+              className="btn btn-primary mt-3 hidden md:block"
+            >
+              Submit
+            </button>
           </div>
         </div>
 
@@ -217,7 +226,7 @@ const CreateProduct = () => {
           )}
         </div>
 
-        <button type="submit" className="btn btn-primary mt-3">
+        <button type="submit" className="btn btn-primary mt-3 md:hidden block">
           Submit
         </button>
       </form>
