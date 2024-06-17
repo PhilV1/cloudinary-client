@@ -119,6 +119,7 @@ const CreateProduct = () => {
     console.log('Form data: ', productData) // log the form data
     // Set the message
     setMessage('Produkt erfolgreich hinzugefügt!')
+    setIsVisible(true)
     setUploading(false)
     // Clear the form
     setName('')
