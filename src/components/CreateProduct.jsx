@@ -7,7 +7,7 @@ const CreateProduct = () => {
   const [errors, setErrors] = useState({})
   const backendUrl = import.meta.env.VITE_BASE_URL
   const [message, setMessage] = useState(null)
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const [imageUrl, setImageUrl] = useState('')
   const [uploading, setUploading] = useState(false)
 
