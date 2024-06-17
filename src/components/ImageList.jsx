@@ -19,7 +19,7 @@ function ImageList() {
     })
       .then((res) => res.json())
       .then((data) => {
-        fetchData()
+        setData(data)
       })
   }
 
