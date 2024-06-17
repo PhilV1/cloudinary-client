@@ -180,7 +180,7 @@ const CreateProduct = () => {
             </div>
             <button
               type="submit"
-              className="btn btn-primary mt-3 hidden md:block"
+              className="btn btn-primary mt-3 hidden md:block hover:btn-ghost"
             >
               Submit
             </button>
@@ -226,7 +226,10 @@ const CreateProduct = () => {
           )}
         </div>
 
-        <button type="submit" className="btn btn-primary mt-3 md:hidden block">
+        <button
+          type="submit"
+          className="btn btn-primary mt-3 md:hidden block hover:btn-ghost"
+        >
           Submit
         </button>
       </form>
